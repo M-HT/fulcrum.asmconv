@@ -1,0 +1,671 @@
+file: tracks.asm
+
+
+procedure: dotrack [public]
+arguments: _track, typesize, edi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: slerp
+arguments: edx, esi, edi, st(0)
+scratch registers: eax, ecx, edx, esi, edi
+scratch fpu registers: st(1)
+
+procedure: dorottrack [public]
+arguments: _track, edi
+scratch registers: eax, ebx, ecx, edx
+
+procedure: doltrack [public]
+arguments: _track, typesize, edi
+scratch registers: eax, ebx, ecx, edx
+
+procedure: dohidetrack [public]
+arguments: ebx, edi
+scratch registers: eax, edx
+
+
+file: erz.asm [fpu_round_up]
+
+
+procedure: doviewer
+scratch registers: ebx, edi
+
+procedure: fun1
+arguments: st(0), st(-1) [output]
+
+procedure: fun2
+arguments: st(1), st(0) [input-output]
+
+procedure: fun3
+arguments: st(1), st(0) [input-output]
+
+procedure: makering
+scratch registers: ecx, edi
+
+procedure: placering
+arguments: esi, edi [input-output]
+
+procedure: placering_inc
+arguments: esi, edi [input-output]
+
+procedure: calcsphere
+scratch registers: ecx, edi
+
+procedure: calcdrop
+scratch registers: eax, ecx, edx, edi
+
+procedure: initchains
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: updatepoints
+scratch registers: eax, ebx, ecx, edx, esi
+
+procedure: updatechains
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: checkdir
+arguments: ebx, st(-1) [output], st(-2) [output]
+
+procedure: drawback
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: subxclip
+arguments: ebx [input-output], edi [input-output]
+return register: eax
+scratch registers: eax, ecx, edx, esi
+
+procedure: subpolygon
+arguments: _sp, sp_end
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: xformchain
+arguments: rings, ebx, edx, edi
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: drawchains
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: xclip
+arguments: ebx [input-output], edi [input-output]
+return register: eax
+scratch registers: eax, ecx, edx, esi
+
+procedure: polygon
+arguments: _sp, sp_end
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: clearbuffer
+scratch registers: eax, ecx, edi
+
+procedure: copybuffer8
+scratch registers: ecx, esi, edi, ebp
+
+procedure: copybuffer16
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
+procedure: copybuffer24
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
+procedure: copybuffer32
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
+procedure: init1
+scratch registers: ecx, edi
+
+procedure: initpaltab
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: initedata [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: upscroll
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: starterz [public]
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+
+file: vesa.asm
+
+
+procedure: keypressed [public]
+return register: eax
+
+procedure: clearlinbuf [public]
+scratch registers: eax, ecx, edi
+
+
+file: credits.asm
+
+
+procedure: mosaic
+arguments: gstep, dpic, esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: copypic
+arguments: xpos, eax, edx, esi, edi [input-output]
+return register: eax
+scratch registers: eax, ebx, ecx, edx, esi
+
+procedure: copycpic
+arguments: xpos, mpic, eax, esi [input-output], edi [input-output]
+return register: eax
+scratch registers: eax, ebx, ecx, edx
+
+procedure: docredits [public]
+arguments: mpic, eax
+return register: eax
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: initpaltab
+arguments: ebx, esi
+scratch registers: eax, ecx, edx, edi
+
+procedure: initcdata [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+
+file: mese.asm [fpu_round_up]
+
+
+procedure: traceobject
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: dotracks
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: doswitchtrack
+arguments: ebx, esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: m_dotracks [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: v_dotracks
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: c_dotracks [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: l_dotracks [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: t_dotracks [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: b_dotracks [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: tobjvmt.o_dotracks
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: doviewer
+arguments: esi, edi
+scratch registers: eax, ebx, ecx
+
+procedure: adjustcamera
+arguments: esi, edi
+scratch registers: ecx
+
+procedure: adjustlight
+arguments: esi, edi
+scratch registers: eax, ecx
+
+procedure: cubetree
+arguments: numcubes, esi, edi
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: xclip
+arguments: spsize, vars, ebx [input-output], edi [input-output]
+return register: eax
+scratch registers: eax, ecx, edx, esi
+
+procedure: subxclip
+arguments: spsize, vars_1, ebx [input-output], edi [input-output]
+return register: eax
+scratch registers: eax, ecx, edx, esi
+
+procedure: polygon
+arguments: _sp, sp_end, mat, ifl0
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: subpolygon
+arguments: _sp, sp_end, mat, ifl0
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: wpolygon
+arguments: _sp, sp_end
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: cubezclip
+arguments: eax, ebx [input-output], esi, edi [input-output]
+return register: eax
+scratch registers: eax, ecx, edx
+
+procedure: drawcube
+arguments: eax, esi
+return register: eax
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: insert
+arguments: edx, st(0)
+scratch registers: eax, ebx, edx, edi
+
+procedure: zprojectline
+arguments: ebx [input-output], edi [input-output]
+return register: eax
+scratch registers: eax, edx, esi
+
+procedure: projectline
+arguments: spsize, ebx [input-output], edi [input-output]
+scratch registers: edx
+
+procedure: renderline
+arguments: _sp, sp_end
+scratch registers: eax, ebx, ecx, esi, edi
+
+procedure: getnextmesh
+arguments: esi [input-output]
+return register: eax
+scratch registers: eax, edx
+
+procedure: xformhierarchy
+arguments: esi, edi
+return register: esi
+scratch registers: eax, ebx, ecx, edx, esi
+
+procedure: projection
+arguments: spsize, vars_1, ebx [input-output], edi [input-output]
+return register: eax
+scratch registers: eax, ecx, edx, esi
+
+procedure: drawface
+arguments: eax, ebx, edx, esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: subdrawface
+arguments: eax, ebx, edx, esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: drawhierarchy
+arguments: idx, esi
+return register: eax
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: drawwater
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: texturedraw
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: fclip
+arguments: edi
+return register: ecx
+scratch registers: eax, ecx
+
+procedure: fdraw
+arguments: intensity, edi
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: flare
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: lightclip
+arguments: spsize, eax, ebx [input-output], edx, edi [input-output], st(0)
+return register: eax
+scratch registers: eax, ecx, esi
+
+procedure: lscalexy
+arguments: spsize, ebx, edi
+
+procedure: lconvert
+arguments: ebx, edi
+return register: edi
+scratch registers: eax, edx, esi, edi
+
+procedure: glconvert
+arguments: ebx, edi
+return register: edi
+scratch registers: eax, edx, esi, edi
+
+procedure: lpolygon
+arguments: _sp, sp_end, idx
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: glpolygon
+arguments: _sp, sp_end, idx
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: sublpolygon
+arguments: _sp, sp_end, zval
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: scubezclip
+arguments: eax, ebx [input-output], esi, edi [input-output]
+return register: eax
+scratch registers: eax, ecx, edx
+
+procedure: sprojection
+arguments: ebx [input-output], edi [input-output]
+return register: eax
+scratch registers: eax, edx, esi
+
+procedure: spolygon
+arguments: _sp, sp_end
+scratch registers: eax, ebx, ecx, esi, edi
+
+procedure: cproject
+arguments: esi, st(2) [input-output], st(1) [input-output], st(0) [input-output]
+
+procedure: rtrace
+arguments: b, u, oldcube, ebx, st(-1) [output]
+return register: edx
+scratch registers: eax, ebx, ecx, edx, esi
+
+procedure: yclip
+arguments: spsize, vars, ebx [input-output], edi [input-output]
+return register: eax
+scratch registers: eax, ecx, edx, esi
+
+procedure: vvolpolygon
+arguments: _sp, sp_end, cubelistpos, cubelistend, cubeliststep, idxlistpos, idxlistend, idxliststep, ca, cu, ipmap, mapptr
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: hvolpolygon
+arguments: _sp, sp_end, cubelistpos, cubelistend, cubeliststep, idxlistpos, idxlistend, idxliststep, ca, cu, ipmap, mapptr
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: vollight
+arguments: vstamp, datapos, lightflags
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: ldraw
+arguments: idx, recursion, ebx, edi
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: gldraw
+arguments: idx, ebx, edi
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: makelgouraud
+scratch registers: eax, ecx, edx
+
+procedure: ldrawface
+arguments: vstamp, ebx, esi, edi [input-output]
+scratch registers: eax, ebx, ecx, edx, esi
+
+procedure: sdrawfaces
+arguments: edi
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: dolights
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: initrgb16
+arguments: esi, edi
+scratch registers: eax, ebx, ecx, edx, ebp
+
+procedure: initrgb24_32
+arguments: esi, edi
+scratch registers: eax, ebx, ecx, edx, ebp
+
+procedure: initpaltab
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi, ebp
+
+procedure: init1
+scratch registers: eax, ecx, edx, edi
+
+procedure: makespot
+arguments: edi, st(0)
+scratch registers: eax, ebx
+decrease fpu pointer: 1
+
+procedure: makewater
+arguments: edi
+scratch registers: eax, ebx, ecx, edx, esi
+
+procedure: makefogmap
+scratch registers: eax, ebx, edi
+
+procedure: makefogwater
+scratch registers: eax, edi
+
+procedure: makeflares
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: makeflaretab
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: copybuffer16
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
+procedure: copybuffer24
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
+procedure: copybuffer32
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
+procedure: copybuffer
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
+procedure: initmdata [public]
+arguments: esi, eax
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: startmese [public]
+arguments: eax
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+
+file: 2deffect.asm [fpu_round_nearest]
+
+
+procedure: Init2DDreamJumpTableASM [public]
+
+procedure: Init2DFadeJumpTableASM [public]
+
+procedure: Init2DBeamFadeJumpTableASM [public]
+
+procedure: Draw2DDreamASM [public]
+arguments: _pBackB1, _pBackB2, _pPolarTab, _pDistFunc, _pSinTab, _pCosTab, _pDestBBack, _dwCFadeFactor, _dwXmax, _dwYmax
+
+procedure: Scale32ASM [public]
+arguments: _pSrc, _pDest, _dwSrcXmax, _dwSrcYmax, _dwDestXmax, _dwDestYmax
+
+procedure: Scale8ASM [public]
+arguments: _pSrc, _pDest, _dwSrcXmax, _dwSrcYmax, _dwDestXmax, _dwDestYmax
+
+procedure: Draw2DEyeASM [public]
+arguments: _pMoveListTab, _pMask, _pPic, _pSrcBack, _pDestBack, _dwNum
+
+procedure: Draw2DFadeASM [public]
+arguments: _pBackBuffer1, _pBackBuffer2, _pDestBack, _pFade, _dwFadeFactor, _dwNum
+
+procedure: Draw2DBeamFadeASM [public]
+arguments: _pBackB1, _pBackB2, _pDestB, _dwFFactor, _dwXmax, _dwYmax, _pSinTabX, _pSinTabY
+
+procedure: DrawFireASM [public]
+arguments: _pDestBack, _pAmpTab, _pYAmpTab, _dwXmax, _dwYmax
+
+
+file: m2ppro.asm [fpu_round_nearest]
+
+
+procedure: MV2ParticleProjectionASM [public, fpu_use_floats]
+arguments: _pMV2Camera, _pMV2Particles, _dwNumParticles, _pBackBuffer
+
+procedure: MV2ParticleDoBernoulliASM [public]
+arguments: pParticles,_dwNumParticles,pSinTab,dwCurTime,fAX [float],fAY1 [float],fAY2 [float],fAZ [float],fFX [float],fFY1 [float],fFY2 [float],fFZ [float],fSDX [float],fSDY1 [float],fSDY2 [float],fSDZ [float],fDY1 [float],fDY2 [float]
+
+procedure: MV2ParticleDoBernoulliMorphToObjectASM [public]
+arguments: pParticles,_dwNumParticles,pSinTab,dwCurTime,fAX [float],fAY1 [float],fAY2 [float],fAZ [float],fFX [float],fFY1 [float],fFY2 [float],fFZ [float],fSDX [float],fSDY1 [float],fSDY2 [float],fSDZ [float],fDY1 [float],fDY2 [float],fMFactor [float]
+
+procedure: MV2ParticleInterpolateASM [public]
+arguments: _pParticles,_dwNumParticles, _fMorphFactor [float]
+
+
+file: m2serv.asm
+
+
+procedure: MV2SelectClipPolygonsASM [public]
+arguments: _ppSrcList, _ppSrcCList, _ppDestList, _iNumSrcList, _piNumSrcCList, _piNumDestList
+
+procedure: CMV2CopyPolygonListASM [public]
+arguments: _ppDest, _ppSrc, _iNumPolygons
+
+procedure: Calc32BitLookupASM [public]
+arguments: _pcPalette, _pcSparklesLookup
+
+
+file: m2sort.asm
+
+
+procedure: MV2AddPolygonsASM [public]
+arguments: _pPolygonDistanceBuffer, _ppPolygon3Edge, _iNumAddPolygons
+return register: eax
+scratch registers: eax
+
+procedure: MV2SortRenderBufferASM [public]
+arguments: _pPolygonDistanceBuffer1, _pPolygonDistanceBuffer2, _iNumPolygons
+
+
+file: m2dotpro.asm [fpu_round_nearest]
+
+
+procedure: MESEtoMV2Dot3DPosProjectionASM [public, fpu_round_up, fpu_use_floats]
+arguments: _pMV2Camera, _ppMV2Dot3DPos, _dwNumDots
+
+procedure: MV2Dot3DPosProjectionASM [public, fpu_round_up, fpu_use_floats]
+arguments: _pMV2Camera, _ppMV2Dot3DPos, _dwNumDots
+
+
+file: m2tracks.asm
+
+
+procedure: doltrackM2
+arguments: _track, typesize, edi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: dolRGBtrackM2
+arguments: _track, typesize, edi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: m_dotracksM2 [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: c_dotracksM2 [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: t_dotracksM2 [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: i_dotracksM2 [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: d_dotracksM2 [public]
+arguments: esi
+scratch registers: eax, ebx, edx, edi
+
+procedure: tobjvmt.o_dotracks
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: doviewer [public]
+arguments: esi, edi
+scratch registers: ebx, ecx
+
+procedure: matrixmul [public]
+arguments: esi, edx, edi
+scratch registers: eax, ebx, ecx
+
+procedure: dotracks [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, esi, edi
+
+procedure: calcbumpomni [public]
+arguments: esi
+scratch registers: eax, ebx, ecx, edx, edi
+
+procedure: initframecount [public]
+scratch registers: eax
+
+procedure: calcframecount [public]
+arguments: eax
+scratch registers: eax
+
+
+file: m2pman.asm
+
+
+procedure: InitPolygonCallTableASM [public]
+
+procedure: MV2DrawPolygonsASM [public, fpu_round_up, fpu_use_floats]
+arguments: _ppPolygons, _iNumPolygons, _pcBackBuffer, _dwXmax
+
+
+file: m2pt.asm
+
+
+procedure: MV2DrawPolygonTASM [public, fpu_round_up, fpu_use_floats]
+arguments: edi
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
+
+file: m2pttr.asm
+
+
+procedure: MV2DrawPolygonTTrASM [public, fpu_round_up, fpu_use_floats]
+arguments: edi
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
+
+file: m2ptg.asm
+
+
+procedure: MV2DrawPolygonTGASM [public, fpu_round_up, fpu_use_floats]
+arguments: edi
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
+
+file: m2ptb.asm
+
+
+procedure: MV2DrawPolygonTBASM [public, fpu_round_up, fpu_use_floats]
+arguments: edi
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
+
+file: m2pt.asm
+
+procedure: InitFltJumpTableTASM [public]
+
+procedure: MV2DrawPolygonTfASM [public, fpu_round_up, fpu_use_floats]
+arguments: edi
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
+
+file: m2ptftr.asm
+
+procedure: InitFltJumpTableTTrASM [public]
+
+procedure: MV2DrawPolygonTfTrASM [public, fpu_round_up, fpu_use_floats]
+arguments: edi
+scratch registers: eax, ebx, ecx, edx, esi, edi, ebp
+
